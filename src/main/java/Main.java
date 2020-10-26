@@ -16,24 +16,39 @@ public class Main {
         list.add(user3);
         System.out.println(list.toString());
 
-        listGetAge(list);
+
+
+        listGetAge1(list);
         listGetSex(list);
 
     }
 
-    public static void listGetAge(List<User> list) {
-        long list1 = list.stream()
-                .filter(user -> user.getAge() > 20)
-                .count();
-        System.out.println("Людей старше 20 " + list1);
 
+
+    public static List<User> listGetAge1(List<User> list) {
+        List<User> list2 = new ArrayList<>();
+        for (User user : list) {
+            user.getAge();
+            if (user.age > 20) {
+                list2.add(user);
+                System.out.println("Взрослый человек " + user);
+            }
+
+        }
+        return list2;
     }
 
-    public static void listGetSex(List<User> list) {
-        long list2 = list.stream()
-                .filter(user -> user.getSex() == Sex.MAN)
-                .count();
-        System.out.println("Мужчин " + list2);
-    }
 
+    public static List<User> listGetSex(List<User> list) {
+        List<User> list3 = new ArrayList<>();
+        for (User user : list) {
+            user.getSex();
+            if (user.Sex == Sex.MAN) {
+                list3.add(user);
+                System.out.println("Мужчина " + user);
+            }
+
+        }
+        return list3;
+    }
 }

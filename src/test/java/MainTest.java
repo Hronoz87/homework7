@@ -29,7 +29,7 @@ class MainTest {
 
     @AfterEach
     public void finalizeTest() {
-        System.out.println("Test complete:" + (System.nanoTime() - testStartTime));
+        System.out.println("Test complete:" + (System.nanoTime() - testStartTime) + "\n");
     }
 
     @Test
@@ -50,10 +50,54 @@ class MainTest {
         actual.add(user);
         actual.add(user1);
         actual.add(user2);
+        actual.add(user3);
 
-
-        Assertions.assertEquals(expected, actual);
+        assertEquals(expected, actual);
     }
 
+    @Test
+    public void TestlistGetAge1() {
+        User user = new User(1, "John", "Smit", Sex.MAN, 20);
+        User user1 = new User(2, "Andy", "Smit", Sex.MAN, 40);
+        User user2 = new User(3, "Anna", "Smit", Sex.WOMAN, 18);
+        User user3 = new User(4, "Maria", "Smit", Sex.WOMAN, 42);
 
+        List<User> list = new ArrayList<>();
+        list.add(user);
+        list.add(user1);
+        list.add(user2);
+        list.add(user3);
+
+        List<User> expected = Main.listGetAge1(list);
+
+        List<User> actual = new ArrayList<>();
+        actual.add(user1);
+        actual.add(user3);
+
+        assertEquals(expected, actual);
+
+    }
+
+    @Test
+    public void TestlistGetSex() {
+        User user = new User(1, "John", "Smit", Sex.MAN, 20);
+        User user1 = new User(2, "Andy", "Smit", Sex.MAN, 40);
+        User user2 = new User(3, "Anna", "Smit", Sex.WOMAN, 18);
+        User user3 = new User(4, "Maria", "Smit", Sex.WOMAN, 42);
+
+        List<User> list = new ArrayList<>();
+        list.add(user);
+        list.add(user1);
+        list.add(user2);
+        list.add(user3);
+
+        List<User> expected = Main.listGetSex(list);
+
+        List<User> actual = new ArrayList<>();
+        actual.add(user);
+        actual.add(user1);
+
+        assertEquals(expected, actual);
+
+    }
 }
